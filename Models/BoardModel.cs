@@ -15,17 +15,9 @@ namespace MilestoneCST_350.Models
         public BoardModel(int Size)
         {
             this.Size = Size;
-            this.Grid = new CellModel[Size, Size];
-            for (int i = 0; i < Size; i++)
-            {
-                for (int j = 0; j < Size; j++)
-                {
-                    
-                    Grid[i, j] = new CellModel(i, j, 0, 0, false, false, false);
-                }
-            }
+            this.Grid = Grid;
         }
-        public void setupLiveNeighbors(int Difficulty)
+        public void SetupLiveNeighbors (int Difficulty)
         {
             Random r = new Random();
             switch (Difficulty)
@@ -75,7 +67,7 @@ namespace MilestoneCST_350.Models
             }
         }
 
-        public void calculateLiveNeighbors()
+        public void CalculateLiveNeighbors()
         {
             for (int i = 0; i < Size; i++)
             {
@@ -84,12 +76,12 @@ namespace MilestoneCST_350.Models
                     if (Grid[i, j].Live == true)
                     {
                         Grid[i, j].LiveNeighbors = 9;
-                        setLiveNeighbors(i, j);
+                        SetLiveNeighbors(i, j);
                     }
                 }
             }
         }
-        public void setLiveNeighbors(int r, int c)
+        public void SetLiveNeighbors(int r, int c)
         {
             for (int i = -1; i < 2; i++)
             {

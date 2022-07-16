@@ -8,32 +8,34 @@ namespace MilestoneCST_350.Services
 {
     public class GameService
     {
-        public CellModel[,] CellGrid = new CellModel[10, 10];
-        public BoardModel GameBoard = new BoardModel(10);
-        public GameService(CellModel[,] CellGrid, BoardModel GameBoard, int Difficulty)
+
+        // grid of buttons, id 0 - 99
+        // cellgrid, gameboard, size, cellmodel grid
+        public List<CellModel> Buttons { get; set; } = new List<CellModel>(); 
+        public BoardModel GameBoard { get; set; } = new BoardModel(10);
+        public GameService(BoardModel GameBoard)
         {
-            this.CellGrid = CellGrid;
             this.GameBoard = GameBoard;
         }
         public GameService() { }
 
-        public void PopulateGrid(int difficulty)
-        {
-           
-            
+        public void PopulateGrid()
+        {  
             for (int r = 0; r < 10; r++)
             {
                 for (int c = 0; c < 10; c++)
                 {
-                    CellGrid[r, c] = new CellModel();
-                    CellGrid[r, c].Row = r;
-                    CellGrid[r, c].Column = c;
-                    CellGrid[r, c].ID = (r * 10) + c;
-
+                    GameBoard.Grid[r, c] = new CellModel
+                    {
+                        Row = r,
+                        Column = c,
+                        ID = (r * 10) + c
+                    };
+                    Buttons.Add(GameBoard.Grid[r, c]);
                 }
             }
-            GameBoard.setupLiveNeighbors(difficulty);
-            GameBoard.calculateLiveNeighbors();
+            GameBoard.SetupLiveNeighbors (GameBoard.Difficulty);
+            GameBoard.CalculateLiveNeighbors();
         }
         // On click method
         //private void Grid_Button_Click(object sender, MouseEventArgs e)
