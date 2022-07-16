@@ -29,7 +29,7 @@ namespace MilestoneCST_350.Services
                     {
                         Row = r,
                         Column = c,
-                        ID = (r * 10) + c
+                        Id = (r * 10) + c
                     };
                     Buttons.Add(GameBoard.Grid[r, c]);
                 }
