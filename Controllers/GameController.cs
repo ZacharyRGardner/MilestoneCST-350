@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 namespace MilestoneCST_350.Controllers
 {
     public class GameController : Controller
-    {  
-        public GameService gameService = new GameService();
+    {         
 
-        public IActionResult Index()
+        public IActionResult Index(int difficulty)
         {
+            GameService gameService = new GameService();
+            gameService.GameBoard.Difficulty = difficulty;
             gameService.PopulateGrid();
 
-            return View("Index", gameService.Buttons);
+            return View("Index", gameService.GameBoard.Buttons);
         }
 
         //public IActionResult HandleButtonClick(string buttonID)

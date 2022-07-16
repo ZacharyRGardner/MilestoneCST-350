@@ -25,6 +25,8 @@ namespace MilestoneCST_350.Models
             this.Live = false;
             this.Flagged = false;
         }
-        public CellModel() { }
+        public CellModel() {
+
+        }
     }
 }
