@@ -1,6 +1,6 @@
 ﻿@model MilestoneCST_350.Models.UserModel
 
-<h4>User Registration</h4>
+<h4>Register to Play Minesweeper!</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,14 +17,15 @@
                 <span asp-validation-for="password" class="text-danger"></span>
             </div>       
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Register" class="btn btn-primary" />               
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Login</a>
+    <a asp-controller="Login" asp-action="Index">Login</a>   
 </div>
 
 @section Scripts {
