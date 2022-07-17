@@ -1,0 +1,31 @@
+﻿@model MilestoneCST_350.Models.BoardModel
+
+<hr />
+<head>
+</head>
+<body>
+    <div id="container">
+    <p>Select the Difficulty And click Submit</p>
+        <div>
+            <label for="easy">Easy</label>
+            <input type="radio" id="easy" name="difficulty" value="1" />
+            <br/>
+
+            <label for="medium">Medium</label>
+            <input type="radio" id="medium" name="difficulty" value="3" />
+            <br/>
+
+            <label for="hard">Hard</label>
+            <input type="radio" id="hard" name="difficulty" value="5" />
+        </div>
+        <button id="submit">Submit</button>
+    </div>
+</body>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
