@@ -10,15 +10,21 @@ using System.Threading.Tasks;
 namespace MilestoneCST_350.Controllers
 {
     public class GameController : Controller
-    {         
-
+    {
+        public GameService gameService = new GameService();       
         public IActionResult Index(int difficulty)
         {
-            GameService gameService = new GameService();
+            /*
+             * 
+             * Step one: Set board difficulty,
+             * populate board
+             * Send view the buttons
+             * 
+             */
             gameService.GameBoard.Difficulty = difficulty;
             gameService.PopulateGrid();
 
-            return View("Index", gameService.GameBoard.Buttons);
+            return View("Index", gameService);
         }
 
         public IActionResult Difficulty(int difficulty)
@@ -42,27 +48,30 @@ namespace MilestoneCST_350.Controllers
             }
         }
 
-        //public IActionResult HandleButtonClick(string buttonID)
-        //{
-        //    int btnID = int.Parse(buttonID);
-        //    int row = ((btnID - (btnID % 10)) / 10);
-        //    int column = btnID % 10;
-            
-        //    gameService.GameBoard.FloodFill(row, column, 10, gameService.GameBoard);
-        //    gameService.UpdateButtonLabels(row, column);
+        lic List<ButtonModel> HandleButtonClick(int buttonID)
+        {
+            int row = gameService.Buttons[buttonID].Row;
+            int column = gameService.Buttons[buttonID].Column;
+            gameService.GameBoard.Grid[row,column].Live = true;
+            gameService.GameBoard.Grid[row,column].Visited = true;            
+            gameService.GameBoard.FloodFill(row, column, 10, gameService.GameBoard);
+            gameService.UpdateButtonLabels(row, column);
 
-        //        for (int r = 0; r < 10; r++)
-        //        {
-        //            for (int c = 0; c < 10; c++)
-        //            {
-        //                if (gameService.CellGrid[r, c].Visited)
-        //                {
-        //                    buttons.ElementAt((r * 10) + c).State = 3;
-        //                }
+        public IActionResult ShowOneButton(int buttonID)
+        {
+            int row = gameService.Buttons[buttonID].Row;
+            int column = gameService.Buttons[buttonID].Column;
+            gameService.GameBoard.Grid[row, column].Live = true;
+            gameService.GameBoard.Grid[row, column].Visited = true;
+            gameService.GameBoard.FloodFill(row, column, 10, gameService.GameBoard);
+            gameService.UpdateButtonLabels(row, column);
 
-        //            }
-        //        }
-        //    return View("Index", buttons);
-        //}
+            foreach (ButtonModel btn in gameService.Buttons)
+            {
+                btn.State = gameService.GameBoard.Grid[btn.Row, btn.Column].State;
+            }
+
+            return PartialView(gameService.Buttons.ElementAt(buttonID));
+        }
     }
 }

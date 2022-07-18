@@ -7,26 +7,21 @@ namespace MilestoneCST_350.Models
 {
     public class BoardModel
     {
+        public Dictionary<int, CellModel> Cells = new Dictionary<int, CellModel>();
         public int Size { get; set; }
         public CellModel[,] Grid { get; set; }
-        public List<CellModel> Buttons { get; set; } = new List<CellModel>();
         //Difficulty range 1-5.  1 = 10% chance each Cell is live, 5 = 50% of grid live
         public int Difficulty { get; set; }
 
         public BoardModel(int Size)
         {
             this.Size = Size;
+            this.Grid = new CellModel[Size, Size];
             for (int r = 0; r < 10; r++)
             {
                 for (int c = 0; c < 10; c++)
                 {
-                    this.Grid[r, c] = new CellModel
-                    {
-                        Id = (r * 10) + c,
-                        Row = r,
-                        Column = c,
-                        
-                    };                  
+                    Grid[r, c] = new CellModel((r* 10) + c, r, c, 0, 0, false, false, false);                 
                 }
             }
         }
