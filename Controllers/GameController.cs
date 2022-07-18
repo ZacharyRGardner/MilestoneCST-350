@@ -29,9 +29,8 @@ namespace MilestoneCST_350.Controllers
 
         public IActionResult Difficulty(int difficulty)
         {
-            //GameService gameService = new GameService();
-            //gameService.GameBoard.Difficulty = difficulty;
-            return PartialView("Index", difficulty);
+            
+            return PartialView("Difficulty", difficulty);
         }
 
         public IActionResult GameResult()
