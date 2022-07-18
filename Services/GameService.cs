@@ -8,22 +8,24 @@ namespace MilestoneCST_350.Services
 {
     public class GameService
     {
-        // grid of buttons, id 0 - 99
-        // cellgrid, gameboard, size, cellmodel grid
-        public BoardModel GameBoard = new BoardModel(10);
-        public GameService() { }
+        public List<ButtonModel> Buttons { get; set; } = new List<ButtonModel>();
+        public BoardModel GameBoard { get; set; }
+        public GameService() 
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    Buttons.Add(new ButtonModel((i * 10) + j, i, j, 0));
+                }
+            }
+            this.GameBoard = new BoardModel(10);          
+        }
 
         public void PopulateGrid()
         {
             GameBoard.SetupLiveNeighbors(GameBoard.Difficulty);
             GameBoard.CalculateLiveNeighbors();
-            for (int r = 0; r < 10; r++)
-            {
-                for (int c = 0; c < 10; c++)
-                {
-                    GameBoard.Buttons.Add(GameBoard.Grid[r, c]);
-                }
-            }
             
         }
         // On click method
@@ -89,7 +91,7 @@ namespace MilestoneCST_350.Services
                 }
             }
         }
-        public void CheckForWin()
+        public bool CheckForWin()
         {
             // Count LiveAndFlagged and Visited Cells.  If they equal full board, you win
             int LiveAndFlagged = 0;
@@ -111,8 +113,9 @@ namespace MilestoneCST_350.Services
             }
             if (LiveAndFlagged + Visited == 100)
             {
-               // Need to Add login for stopping the game on a win              
+                return true;         
             }
+            return false;
         }
         public void RevealBoard(int r, int c)
         {

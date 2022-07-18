@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MilestoneCST_350.Models.CellModel>
+﻿@model MilestoneCST_350.Services.GameService
 
 <style>
     .game-button-image {
@@ -30,17 +30,18 @@
     <div class="button-zone">
 
 
-        @for (int i = 0; i < Model.Count(); i++)
+        @for (int i = 0; i < Model.Buttons.Count(); i++)
         {
             if (i % 10 == 0)
             {
                 <div class="line-break">
                 </div>
             }
-
-            <button class="game-button" name="buttonId" value="@Model.ElementAt(i).Id" type="submit" asp-controller="Game" asp-action="HandleButtonClick">
-                <img class="game-button-image" src="~/img/@images[Model.ElementAt(i).State]" />
-            </button>
+    <div class="oneButton" id=@i>
+        <button class="game-button" id="@Model.Buttons.ElementAt(i).State" name="buttonId" value="@Model.Buttons.ElementAt(i).Id" type="submit" onclick="return HandleButtonClick();">
+            <img class="game-button-image" src="~/img/@images[Model.Buttons.ElementAt(i).State]" />
+        </button>
+    </div>
         }
     </div>
 </form>

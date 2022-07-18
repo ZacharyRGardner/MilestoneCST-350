@@ -17,6 +17,7 @@ namespace MilestoneCST_350.Models
         public Boolean Flagged { get; set; }
         public CellModel(int Id, int Row, int Column, int State, int LiveNeighbors, Boolean Visited, Boolean Live, Boolean Flagged)
         {
+            this.Id = Id;
             this.Row = Row;
             this.Column = Column;
             this.State = State;
