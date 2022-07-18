@@ -1,0 +1,49 @@
+﻿@model MilestoneCST_350.Models.BoardModel
+
+
+<header>
+    <script type="text/javascript">
+        function selectDif()
+        {
+            
+            var easy = document.getElementById("easy");
+            var medium = document.getElementById("medium");
+            var hard = document.getElementById("hard");
+
+            if (easy.checked == true)
+                alert("You have selected Easy as your Difficulty");
+            else if (medium.checked == true)
+                alert("You have selected Medium as your Difficulty");
+            else if (hard.checked == true)
+                alert("You have Selected Hard as your Difficulty");
+            else
+                alert("You have not selected a Difficulty");
+        }
+       // return document.get
+    </script>
+</header>
+<body>
+    <h5>Choose your DIfficulty</h5>
+    <form>
+        <label for="easy">Easy</label>
+        <input type="radio" id="easy" name="difficulty" value="1" />
+        <br/>
+
+        <label for="medium">Medium</label>
+        <input type="radio" id="medium" name="difficulty" value="3" />
+        <br/>
+
+        <label for="hard">Hard</label>
+        <input type="radio" id="hard" name="difficulty" value="5" />
+    </form>
+    <button onsubmit=""
+</body>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

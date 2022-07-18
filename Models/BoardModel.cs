@@ -78,6 +78,7 @@ namespace MilestoneCST_350.Models
                 default:
                     break;
             }
+            
         }
 
         public void CalculateLiveNeighbors()
