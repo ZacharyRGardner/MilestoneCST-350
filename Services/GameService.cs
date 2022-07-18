@@ -91,7 +91,7 @@ namespace MilestoneCST_350.Services
                 }
             }
         }
-        public void CheckForWin()
+        public bool CheckForWin()
         {
             // Count LiveAndFlagged and Visited Cells.  If they equal full board, you win
             int LiveAndFlagged = 0;
@@ -113,8 +113,9 @@ namespace MilestoneCST_350.Services
             }
             if (LiveAndFlagged + Visited == 100)
             {
-               // Need to Add login for stopping the game on a win              
+                return true;         
             }
+            return false;
         }
         public void RevealBoard(int r, int c)
         {

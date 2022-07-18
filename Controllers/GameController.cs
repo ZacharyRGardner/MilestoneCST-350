@@ -27,17 +27,28 @@ namespace MilestoneCST_350.Controllers
             return View("Index", gameService);
         }
 
-        /*
-         * 
-         * on click, I send the button ID
-         * update the grid for gameplay, run logic
-         * the dictionary for updating the buttonModel list
-         * return the updated buttonModel list
-         * verify that button states are updated.
-         * Update just the partial view, instead of the whole page, run the controller only to start the game, not to run the game.
-         * Run the game with Javascript
-         */
-        public List<ButtonModel> HandleButtonClick(int buttonID)
+        public IActionResult Difficulty(int difficulty)
+        {
+            //GameService gameService = new GameService();
+            //gameService.GameBoard.Difficulty = difficulty;
+            return PartialView("Index", difficulty);
+        }
+
+        public IActionResult GameResult()
+        {
+            GameService gameService = new GameService();
+            bool win = gameService.CheckForWin();
+            if(win == true)
+            {
+                return View("WinResult");
+            }
+            else
+            {
+                return View("LoseResult");
+            }
+        }
+
+        lic List<ButtonModel> HandleButtonClick(int buttonID)
         {
             int row = gameService.Buttons[buttonID].Row;
             int column = gameService.Buttons[buttonID].Column;
@@ -45,13 +56,6 @@ namespace MilestoneCST_350.Controllers
             gameService.GameBoard.Grid[row,column].Visited = true;            
             gameService.GameBoard.FloodFill(row, column, 10, gameService.GameBoard);
             gameService.UpdateButtonLabels(row, column);
-
-            foreach(ButtonModel btn in gameService.Buttons)
-            {
-                btn.State = gameService.GameBoard.Grid[btn.Row, btn.Column].State;
-            }
-            return (gameService.Buttons);
-        }
 
         public IActionResult ShowOneButton(int buttonID)
         {
