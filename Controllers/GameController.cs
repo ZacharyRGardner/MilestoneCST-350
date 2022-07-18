@@ -48,14 +48,16 @@ namespace MilestoneCST_350.Controllers
             }
         }
 
-        lic List<ButtonModel> HandleButtonClick(int buttonID)
+        public void HandleButtonClick(int buttonID)
         {
             int row = gameService.Buttons[buttonID].Row;
             int column = gameService.Buttons[buttonID].Column;
-            gameService.GameBoard.Grid[row,column].Live = true;
-            gameService.GameBoard.Grid[row,column].Visited = true;            
+            gameService.GameBoard.Grid[row, column].Live = true;
+            gameService.GameBoard.Grid[row, column].Visited = true;
             gameService.GameBoard.FloodFill(row, column, 10, gameService.GameBoard);
             gameService.UpdateButtonLabels(row, column);
+
+        }
 
         public IActionResult ShowOneButton(int buttonID)
         {
