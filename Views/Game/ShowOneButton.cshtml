@@ -1,0 +1,16 @@
+﻿@model MilestoneCST_350.Models.ButtonModel
+
+@{
+    string[] images = { "orange.png", "blue.png", "flag.png", "red.png" };
+
+    
+
+}
+
+<div class="button-zone">
+        <div class="oneButton" id=@Model.Id>
+            <button class="game-button" id="@Model.Id" name="buttonId" value="@Model.Id" type="submit" onclick="return doButtonUpdate();">
+                <img class="game-button-image" src="~/img/@images[Model.State]" />
+            </button>
+        </div>
+</div>

@@ -1,11 +1,9 @@
 ﻿@model MilestoneCST_350.Models.BoardModel
 
-
 <header>
     <script type="text/javascript">
         function selectDif()
         {
-            /*
             var easy = document.getElementById("easy");
             var medium = document.getElementById("medium");
             var hard = document.getElementById("hard");
@@ -27,12 +25,12 @@
             }
 
         }
-       // return document.get
     </script>
     <div id="result"></div>
 </header>
 <body>
     <h5>Choose your DIfficulty</h5>
+
     <form>
         <label for="easy">Easy</label>
         <input type="radio" id="easy" name="difficulty" value="1" />
@@ -46,11 +44,16 @@
         <input type="radio" id="hard" name="difficulty" value="5" />
     </form>
     <button onsubmit="selectDif()" value="result">Submit</button>
+
 </body>
 
 
 <div>
+
     <a asp-action="Index">Back to List</a>
+
+    <a asp-action="Index">Start Game</a>
+
 </div>
 
 @section Scripts {
