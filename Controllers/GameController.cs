@@ -11,9 +11,10 @@ namespace MilestoneCST_350.Controllers
 {
     public class GameController : Controller
     {
-        public GameService gameService = new GameService();       
+             
         public IActionResult Index(int difficulty)
         {
+            GameService gameService = new GameService();
             /*
              * 
              * Step one: Set board difficulty,
@@ -29,9 +30,8 @@ namespace MilestoneCST_350.Controllers
 
         public IActionResult Difficulty(int difficulty)
         {
-            //GameService gameService = new GameService();
-            //gameService.GameBoard.Difficulty = difficulty;
-            return PartialView("Index", difficulty);
+            
+            return PartialView("Difficulty", difficulty);
         }
 
         public IActionResult GameResult()
