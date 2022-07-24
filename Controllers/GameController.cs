@@ -29,7 +29,32 @@ namespace MilestoneCST_350.Controllers
 
         public IActionResult Difficulty(int difficulty)
         {
-            
+
+            //GameService gameService = new GameService();
+            //gameService.GameBoard.Difficulty = difficulty;
+            return PartialView("Index", difficulty);
+        }
+
+        public IActionResult GameResult()
+        {
+            GameService gameService = new GameService();
+            bool win = gameService.CheckForWin();
+            if(win == true)
+            {
+                return View("WinResult");
+            }
+            else
+            {
+                return View("LoseResult");
+            }
+        }
+
+        //public IActionResult HandleButtonClick(string buttonID)
+        //{
+        //    int btnID = int.Parse(buttonID);
+        //    int row = ((btnID - (btnID % 10)) / 10);
+        //    int column = btnID % 10;
+
             return PartialView("Difficulty", difficulty);
         }
 

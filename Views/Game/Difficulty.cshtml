@@ -1,9 +1,9 @@
-﻿
+﻿@model MilestoneCST_350.Models.BoardModel
+
 <header>
     <script type="text/javascript">
         function selectDif()
         {
-            
             var easy = document.getElementById("easy");
             var medium = document.getElementById("medium");
             var hard = document.getElementById("hard");
@@ -16,11 +16,21 @@
                 alert("You have Selected Hard as your Difficulty");
             else
                 alert("You have not selected a Difficulty");
-        }       
+                */
+            var x = document.getElementsByName('difficulty');
+
+            for (i = 0; i < x.lenth; i++) {
+                if (x[i].checked)
+                    document.getElementsByName("result").innerHTML = "difficulty: " + x[i].value;
+            }
+
+        }
     </script>
+    <div id="result"></div>
 </header>
 <body>
-    <h5>Choose your Difficulty</h5>
+    <h5>Choose your DIfficulty</h5>
+
     <form>
         <label for="easy">Easy</label>
         <input type="radio" id="easy" name="difficulty" value="1" />
@@ -33,12 +43,17 @@
         <label for="hard">Hard</label>
         <input type="radio" id="hard" name="difficulty" value="5" />
     </form>
-    <button onsubmit=""/>
+    <button onsubmit="selectDif()" value="result">Submit</button>
+
 </body>
 
 
 <div>
+
+    <a asp-action="Index">Back to List</a>
+
     <a asp-action="Index">Start Game</a>
+
 </div>
 
 @section Scripts {
