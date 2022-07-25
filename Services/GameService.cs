@@ -1,4 +1,5 @@
-﻿using MilestoneCST_350.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MilestoneCST_350.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,20 @@ namespace MilestoneCST_350.Services
             }
             this.GameBoard = new BoardModel(10);          
         }
+
+        //public static GameService Current
+        //{
+        //    get
+        //    {
+        //        var game = HttpContext.Current.Session["Game"] as GameService;
+        //        if (null == game)
+        //        {
+        //            game = new GameService();
+        //            HttpContext.Current.Session["Game"] = game;
+        //        }
+        //        return game;
+        //    }
+        //}
 
         public void PopulateGrid()
         {
