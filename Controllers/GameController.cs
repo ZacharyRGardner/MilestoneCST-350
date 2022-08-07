@@ -14,8 +14,7 @@ namespace MilestoneCST_350.Controllers
     public class GameController : Controller, IHttpHandler
     {
         //public GameService gameService = new GameService();
-        [HttpGet]
-        [CustomAuthorization]
+       
         public IActionResult Index(int difficulty)
         {
 
@@ -33,8 +32,7 @@ namespace MilestoneCST_350.Controllers
             return View("Index", gameService);
         }
 
-        [HttpGet]
-        [CustomAuthorization]
+        
         public IActionResult Difficulty(int difficulty)
         {
             
