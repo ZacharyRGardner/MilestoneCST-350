@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'Minesweeper-CST-350'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DAB8853D16494AF9A9B286362C3CD778 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_779001A3FF234F29AC7D23A382061482 }}
           package: .
