@@ -9,7 +9,7 @@ namespace MilestoneCST_350.Services
 {
     public class SecurityDAO
     {
-        string connectionString = @"Data Source=minesweeper-sql-server.database.windows.net;Initial Catalog=userDB;User ID=madmin;Password=********;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connectionString = @"Data Source=minesweeper-sql-server.database.windows.net;Initial Catalog=userDB;User ID=madmin;Password=Minesweeper-350;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public bool FindUserByNameAndPassword(LoginModel login)
         {
